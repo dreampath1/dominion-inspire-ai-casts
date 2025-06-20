@@ -45,14 +45,14 @@ const About = () => {
               <img 
                 src="/lovable-uploads/50479605-1d21-47d2-a126-5ec58f7e2090.png" 
                 alt="Male Speaker Profile"
-                className="w-full h-48 object-cover"
+                className="w-full h-64 object-contain bg-gray-50"
               />
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
                 src="/lovable-uploads/6e018f66-8a69-4da6-8053-f50cca5695b6.png" 
                 alt="Female Speaker Profile"
-                className="w-full h-48 object-cover"
+                className="w-full h-64 object-contain bg-gray-50"
               />
             </div>
           </motion.div>
