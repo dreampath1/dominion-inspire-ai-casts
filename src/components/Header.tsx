@@ -21,6 +21,7 @@ const Header = () => {
         </motion.div>
         <div className="hidden md:flex space-x-8">
           <a href="#home" className="hover:text-orange-500 transition-colors">Home</a>
+          <a href="#videos" className="hover:text-orange-500 transition-colors">Videos</a>
           <a href="#episodes" className="hover:text-orange-500 transition-colors">Episodes</a>
           <a href="#about" className="hover:text-orange-500 transition-colors">About</a>
           <a href="#community" className="hover:text-orange-500 transition-colors">Community</a>
