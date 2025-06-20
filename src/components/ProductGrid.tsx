@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import ProductCard from "@/components/ProductCard";
 
@@ -28,6 +29,30 @@ const products = [
   },
   {
     id: 4,
+    name: "Speak Life Tee",
+    price: "$29.99",
+    image: "/lovable-uploads/ad94d17c-0975-44df-b677-e11f7dbf6290.png",
+    category: "Apparel",
+    description: "Inspire yourself and others with positive words"
+  },
+  {
+    id: 5,
+    name: "Don't Let Go Tee",
+    price: "$29.99",
+    image: "/lovable-uploads/fd01c68e-69db-4e4c-b846-dc77fc264864.png",
+    category: "Apparel",
+    description: "Keep fighting and never give up on your dreams"
+  },
+  {
+    id: 6,
+    name: "Know Who You Are Tee",
+    price: "$29.99",
+    image: "/lovable-uploads/fb46c430-bd04-40ae-85b6-4da84787e760.png",
+    category: "Apparel",
+    description: "Embrace your identity and inner strength"
+  },
+  {
+    id: 7,
     name: "Dominion T-Shirt",
     price: "$29.99",
     image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop",
@@ -35,7 +60,7 @@ const products = [
     description: "Premium cotton tee with motivational messaging"
   },
   {
-    id: 5,
+    id: 8,
     name: "Power Hoodie",
     price: "$49.99",
     image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=500&fit=crop",
@@ -43,7 +68,7 @@ const products = [
     description: "Comfortable hoodie for your journey to greatness"
   },
   {
-    id: 6,
+    id: 9,
     name: "Victory Cap",
     price: "$24.99",
     image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&h=500&fit=crop",
@@ -51,7 +76,7 @@ const products = [
     description: "Stylish cap to crown your achievements"
   },
   {
-    id: 7,
+    id: 10,
     name: "Motivation Mug",
     price: "$19.99",
     image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&h=500&fit=crop",
@@ -59,15 +84,15 @@ const products = [
     description: "Start your day with inspiration"
   },
   {
-    id: 8,
+    id: 11,
     name: "Success Journal",
     price: "$34.99",
-    image: "https://images.unsplash.com/photo-1517971129774-a8b24fbe8cd9?w=500&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=500&h=500&fit=crop",
     category: "Lifestyle",
     description: "Document your path to greatness"
   },
   {
-    id: 9,
+    id: 12,
     name: "Dominion Water Bottle",
     price: "$27.99",
     image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&h=500&fit=crop",
