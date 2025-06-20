@@ -109,29 +109,30 @@ const VideoGallery = () => {
   };
 
   return (
-    <section className="py-20 bg-slate-50">
-      <div className="container mx-auto px-6">
+    <section className="py-12 sm:py-20 bg-slate-50">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4 text-slate-900">Video Library</h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-slate-900">Video Library</h2>
+          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">
             Watch our motivational videos and dive deeper with podcast discussions
           </p>
           
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
             {themes.map((theme) => (
               <Button
                 key={theme.value}
                 variant={selectedTheme === theme.value ? "default" : "outline"}
                 onClick={() => setSelectedTheme(theme.value)}
-                className={selectedTheme === theme.value 
-                  ? "bg-orange-600 hover:bg-orange-700" 
-                  : "hover:bg-orange-50 hover:text-orange-700 hover:border-orange-300"
-                }
+                className={`text-xs sm:text-sm px-3 sm:px-4 py-1 sm:py-2 ${
+                  selectedTheme === theme.value 
+                    ? "bg-orange-600 hover:bg-orange-700" 
+                    : "hover:bg-orange-50 hover:text-orange-700 hover:border-orange-300"
+                }`}
               >
                 {theme.label}
               </Button>
@@ -139,7 +140,7 @@ const VideoGallery = () => {
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredVideos.map((video, index) => (
             <motion.div
               key={video.id}
@@ -148,38 +149,38 @@ const VideoGallery = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
+              className="w-full"
             >
               <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all group h-full flex flex-col">
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-40 sm:h-48 overflow-hidden">
                   <img 
                     src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
                     alt={video.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     onError={(e) => {
-                      // Fallback to default thumbnail if maxresdefault doesn't exist
                       e.currentTarget.src = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
                     }}
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
-                  <div className="absolute bottom-4 right-4 bg-black/80 text-white px-2 py-1 rounded text-sm">
+                  <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 py-1 rounded text-xs sm:text-sm">
                     {video.duration}
                   </div>
-                  <div className="absolute top-4 left-4">
+                  <div className="absolute top-2 sm:top-4 left-2 sm:left-4">
                     <span className="bg-orange-600 text-white px-2 py-1 rounded text-xs font-medium capitalize">
                       {video.theme.replace('-', ' ')}
                     </span>
                   </div>
                 </div>
                 
-                <CardContent className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-lg font-semibold mb-2 line-clamp-2 flex-1">{video.title}</h3>
-                  <div className="text-sm text-gray-500 mb-4">
+                <CardContent className="p-4 sm:p-6 flex-1 flex flex-col">
+                  <h3 className="text-base sm:text-lg font-semibold mb-2 line-clamp-2 flex-1 leading-tight">{video.title}</h3>
+                  <div className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">
                     {video.views} • {video.uploadDate}
                   </div>
                   
-                  <div className="flex gap-2 mt-auto">
+                  <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                     <Button 
-                      className="bg-red-600 hover:bg-red-700 text-white flex-1"
+                      className="bg-red-600 hover:bg-red-700 text-white w-full sm:flex-1 text-sm"
                       onClick={() => handlePlayVideo(video.youtubeId)}
                     >
                       <Play className="w-4 h-4 mr-2" />
@@ -189,7 +190,7 @@ const VideoGallery = () => {
                     {video.podcastEpisode && (
                       <Button 
                         variant="outline" 
-                        className="flex-1 hover:bg-orange-50 hover:text-orange-700 hover:border-orange-300"
+                        className="w-full sm:flex-1 hover:bg-orange-50 hover:text-orange-700 hover:border-orange-300 text-sm"
                         onClick={() => {
                           const episodesSection = document.getElementById('episodes');
                           if (episodesSection) {
@@ -208,13 +209,13 @@ const VideoGallery = () => {
           ))}
         </div>
 
-        {/* Video Modal */}
+        {/* Video Modal - Mobile Optimized */}
         {selectedVideo && (
-          <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg overflow-hidden max-w-4xl w-full max-h-[90vh]">
-              <div className="flex justify-between items-center p-4 border-b">
-                <h3 className="text-lg font-semibold">Video Player</h3>
-                <Button variant="ghost" onClick={closeVideo}>
+          <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-2 sm:p-4">
+            <div className="bg-white rounded-lg overflow-hidden w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh]">
+              <div className="flex justify-between items-center p-3 sm:p-4 border-b">
+                <h3 className="text-base sm:text-lg font-semibold">Video Player</h3>
+                <Button variant="ghost" onClick={closeVideo} className="text-lg sm:text-xl">
                   ✕
                 </Button>
               </div>
