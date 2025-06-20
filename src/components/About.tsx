@@ -41,21 +41,19 @@ const About = () => {
             viewport={{ once: true }}
             className="grid grid-cols-2 gap-4"
           >
-            <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg h-48 flex items-center justify-center">
-              <div className="text-orange-500 text-center">
-                <div className="w-16 h-16 bg-orange-500 rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <div className="w-6 h-6 bg-white rounded-full"></div>
-                </div>
-                <p className="text-white text-sm">Speaker Profile</p>
-              </div>
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="/lovable-uploads/50479605-1d21-47d2-a126-5ec58f7e2090.png" 
+                alt="Male Speaker Profile"
+                className="w-full h-48 object-cover"
+              />
             </div>
-            <div className="bg-gradient-to-br from-orange-600 to-orange-700 rounded-lg h-48 flex items-center justify-center">
-              <div className="text-white text-center">
-                <div className="w-16 h-16 bg-white/20 rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <div className="w-6 h-6 bg-white rounded-full"></div>
-                </div>
-                <p className="text-white text-sm">Audio Waveform</p>
-              </div>
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="/lovable-uploads/6e018f66-8a69-4da6-8053-f50cca5695b6.png" 
+                alt="Female Speaker Profile"
+                className="w-full h-48 object-cover"
+              />
             </div>
           </motion.div>
         </div>

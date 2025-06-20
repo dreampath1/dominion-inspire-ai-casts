@@ -12,7 +12,7 @@ const Episodes = () => {
       description: "Discover the transformative power of strategic withdrawal and how to emerge stronger than ever before.",
       type: "Single Speaker",
       duration: "8 min",
-      image: "bg-gradient-to-br from-slate-600 to-slate-800"
+      image: "/lovable-uploads/d6c848d6-18a7-4db4-80f3-78969ebe20b9.png"
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const Episodes = () => {
       description: "A powerful conversation about the importance of consistency and showing up every single day.",
       type: "Dual Speaker", 
       duration: "9 min",
-      image: "bg-gradient-to-br from-orange-500 to-orange-700"
+      image: "/lovable-uploads/690f0442-75cf-4324-b771-6cba7958cdb1.png"
     }
   ];
 
@@ -48,7 +48,12 @@ const Episodes = () => {
               whileHover={{ scale: 1.02 }}
             >
               <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className={`h-48 ${episode.image} relative flex items-center justify-center`}>
+                <div className="h-48 relative overflow-hidden">
+                  <img 
+                    src={episode.image} 
+                    alt={episode.title}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-black/20"></div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <span className="bg-orange-600 px-3 py-1 rounded text-sm font-medium">{episode.type}</span>
