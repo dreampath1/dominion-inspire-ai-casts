@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import ProductCard from "@/components/ProductCard";
+import { useMemo } from "react";
 
 const products = [
   {
@@ -102,6 +103,16 @@ const products = [
 ];
 
 const ProductGrid = () => {
+  // Shuffle the products array randomly on component mount
+  const shuffledProducts = useMemo(() => {
+    const shuffled = [...products];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }, []);
+
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="container mx-auto">
@@ -120,7 +131,7 @@ const ProductGrid = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {products.map((product, index) => (
+          {shuffledProducts.map((product, index) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 20 }}
