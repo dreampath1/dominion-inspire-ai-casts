@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,14 +15,16 @@ const Header = () => {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center space-x-2 sm:space-x-3"
         >
-          <img 
-            src="/lovable-uploads/ffd7c94e-a600-4204-b58b-370be2e6bce0.png" 
-            alt="Dominion Motivational Logo"
-            className="h-8 sm:h-10 w-auto"
-          />
-          <div className="text-lg sm:text-2xl font-bold">
-            Dominion Motivational
-          </div>
+          <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
+            <img 
+              src="/lovable-uploads/ffd7c94e-a600-4204-b58b-370be2e6bce0.png" 
+              alt="Dominion Motivational Logo"
+              className="h-8 sm:h-10 w-auto"
+            />
+            <div className="text-lg sm:text-2xl font-bold">
+              Dominion Motivational
+            </div>
+          </Link>
         </motion.div>
         
         {/* Mobile menu button */}
@@ -39,12 +42,13 @@ const Header = () => {
 
         {/* Desktop navigation */}
         <div className="hidden md:flex space-x-6 lg:space-x-8">
-          <a href="#home" className="hover:text-orange-500 transition-colors">Home</a>
+          <Link to="/" className="hover:text-orange-500 transition-colors">Home</Link>
           <a href="#podcasts" className="hover:text-orange-500 transition-colors">Podcasts</a>
           <a href="#videos" className="hover:text-orange-500 transition-colors">Videos</a>
           <a href="#episodes" className="hover:text-orange-500 transition-colors">Episodes</a>
           <a href="#about" className="hover:text-orange-500 transition-colors">About</a>
           <a href="#community" className="hover:text-orange-500 transition-colors">Community</a>
+          <Link to="/merchandise" className="hover:text-orange-500 transition-colors">Shop</Link>
         </div>
       </nav>
 
@@ -55,12 +59,13 @@ const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           className="md:hidden bg-slate-800 px-4 py-4 space-y-4"
         >
-          <a href="#home" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>Home</a>
+          <Link to="/" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>Home</Link>
           <a href="#podcasts" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>Podcasts</a>
           <a href="#videos" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>Videos</a>
           <a href="#episodes" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>Episodes</a>
           <a href="#about" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>About</a>
           <a href="#community" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>Community</a>
+          <Link to="/merchandise" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>Shop</Link>
         </motion.div>
       )}
     </header>
