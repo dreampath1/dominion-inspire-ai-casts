@@ -11,7 +11,7 @@ interface Video {
   duration: string;
   views: string;
   uploadDate: string;
-  thumbnail: string;
+  youtubeId: string;
   youtubeUrl: string;
   podcastEpisode?: string;
   theme: string;
@@ -19,6 +19,7 @@ interface Video {
 
 const VideoGallery = () => {
   const [selectedTheme, setSelectedTheme] = useState("all");
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   const videos: Video[] = [
     {
@@ -27,7 +28,7 @@ const VideoGallery = () => {
       duration: "3:43",
       views: "6 views",
       uploadDate: "1 hour ago",
-      thumbnail: "/lovable-uploads/d6c848d6-18a7-4db4-80f3-78969ebe20b9.png",
+      youtubeId: "S4EZlXgKV4U",
       youtubeUrl: "https://www.youtube.com/watch?v=S4EZlXgKV4U",
       podcastEpisode: "The Power of Retreat: Healing and Returning Stronger",
       theme: "resilience"
@@ -38,7 +39,7 @@ const VideoGallery = () => {
       duration: "1:51",
       views: "54 views",
       uploadDate: "1 day ago",
-      thumbnail: "/lovable-uploads/690f0442-75cf-4324-b771-6cba7958cdb1.png",
+      youtubeId: "cveARQj9LUQ",
       youtubeUrl: "https://www.youtube.com/watch?v=cveARQj9LUQ",
       podcastEpisode: "The Unseen Grind: Why Showing Up Daily Matters",
       theme: "consistency"
@@ -49,8 +50,8 @@ const VideoGallery = () => {
       duration: "4:09",
       views: "142 views",
       uploadDate: "8 days ago",
-      thumbnail: "/lovable-uploads/d6c848d6-18a7-4db4-80f3-78969ebe20b9.png",
-      youtubeUrl: "https://www.youtube.com/watch?v=UaJjZ15Xg0U",
+      youtubeId: "UajfZ15Xg0U",
+      youtubeUrl: "https://www.youtube.com/watch?v=UajfZ15Xg0U&t=1s",
       theme: "healing"
     },
     {
@@ -59,9 +60,29 @@ const VideoGallery = () => {
       duration: "6:03",
       views: "189 views",
       uploadDate: "11 days ago",
-      thumbnail: "/lovable-uploads/690f0442-75cf-4324-b771-6cba7958cdb1.png",
-      youtubeUrl: "https://www.youtube.com/watch?v=wi4ahBsIxLM",
+      youtubeId: "4ahBsIxLMGc",
+      youtubeUrl: "https://www.youtube.com/watch?v=4ahBsIxLMGc&t=171s",
       theme: "new-beginnings"
+    },
+    {
+      id: "5",
+      title: "KNOW WHO YOU ARE",
+      duration: "1:16",
+      views: "317 views",
+      uploadDate: "2 weeks ago",
+      youtubeId: "5dapBqBgmnA",
+      youtubeUrl: "https://www.youtube.com/watch?v=5dapBqBgmnA",
+      theme: "self-awareness"
+    },
+    {
+      id: "6",
+      title: "SPEAK LIFE",
+      duration: "9:40",
+      views: "5.9K views",
+      uploadDate: "5 months ago",
+      youtubeId: "3AwXOvpgOqg",
+      youtubeUrl: "https://www.youtube.com/watch?v=3AwXOvpgOqg&t=32s",
+      theme: "motivation"
     }
   ];
 
@@ -70,12 +91,22 @@ const VideoGallery = () => {
     { value: "resilience", label: "Resilience" },
     { value: "consistency", label: "Consistency" },
     { value: "healing", label: "Healing" },
-    { value: "new-beginnings", label: "New Beginnings" }
+    { value: "new-beginnings", label: "New Beginnings" },
+    { value: "self-awareness", label: "Self Awareness" },
+    { value: "motivation", label: "Motivation" }
   ];
 
   const filteredVideos = selectedTheme === "all" 
     ? videos 
     : videos.filter(video => video.theme === selectedTheme);
+
+  const handlePlayVideo = (youtubeId: string) => {
+    setSelectedVideo(youtubeId);
+  };
+
+  const closeVideo = () => {
+    setSelectedVideo(null);
+  };
 
   return (
     <section className="py-20 bg-slate-50">
@@ -118,12 +149,16 @@ const VideoGallery = () => {
               transition={{ delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
             >
-              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all group h-full flex flex-col">
                 <div className="relative h-48 overflow-hidden">
                   <img 
-                    src={video.thumbnail} 
+                    src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
                     alt={video.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      // Fallback to default thumbnail if maxresdefault doesn't exist
+                      e.currentTarget.src = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
+                    }}
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
                   <div className="absolute bottom-4 right-4 bg-black/80 text-white px-2 py-1 rounded text-sm">
@@ -136,16 +171,16 @@ const VideoGallery = () => {
                   </div>
                 </div>
                 
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-2 line-clamp-2">{video.title}</h3>
+                <CardContent className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-lg font-semibold mb-2 line-clamp-2 flex-1">{video.title}</h3>
                   <div className="text-sm text-gray-500 mb-4">
                     {video.views} • {video.uploadDate}
                   </div>
                   
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 mt-auto">
                     <Button 
                       className="bg-red-600 hover:bg-red-700 text-white flex-1"
-                      onClick={() => window.open(video.youtubeUrl, '_blank')}
+                      onClick={() => handlePlayVideo(video.youtubeId)}
                     >
                       <Play className="w-4 h-4 mr-2" />
                       Watch Video
@@ -156,7 +191,6 @@ const VideoGallery = () => {
                         variant="outline" 
                         className="flex-1 hover:bg-orange-50 hover:text-orange-700 hover:border-orange-300"
                         onClick={() => {
-                          // Scroll to episodes section
                           const episodesSection = document.getElementById('episodes');
                           if (episodesSection) {
                             episodesSection.scrollIntoView({ behavior: 'smooth' });
@@ -168,19 +202,36 @@ const VideoGallery = () => {
                       </Button>
                     )}
                   </div>
-                  
-                  {video.podcastEpisode && (
-                    <div className="mt-3 p-3 bg-orange-50 rounded-lg">
-                      <p className="text-sm text-orange-800">
-                        <strong>Podcast Discussion:</strong> {video.podcastEpisode}
-                      </p>
-                    </div>
-                  )}
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
+
+        {/* Video Modal */}
+        {selectedVideo && (
+          <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-lg overflow-hidden max-w-4xl w-full max-h-[90vh]">
+              <div className="flex justify-between items-center p-4 border-b">
+                <h3 className="text-lg font-semibold">Video Player</h3>
+                <Button variant="ghost" onClick={closeVideo}>
+                  ✕
+                </Button>
+              </div>
+              <div className="aspect-video">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
