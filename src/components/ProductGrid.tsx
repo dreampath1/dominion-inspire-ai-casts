@@ -5,6 +5,30 @@ import ProductCard from "@/components/ProductCard";
 const products = [
   {
     id: 1,
+    name: "Show Up Every Day Tee",
+    price: "$29.99",
+    image: "/lovable-uploads/eadd9093-0fe4-46d0-8de7-dc3f436541f7.png",
+    category: "Apparel",
+    description: "Daily motivation reminder - consistency is key"
+  },
+  {
+    id: 2,
+    name: "Take Dominion Tee",
+    price: "$29.99",
+    image: "/lovable-uploads/38930bec-7fab-48ce-b723-17e08e8b5cad.png",
+    category: "Apparel",
+    description: "Take control of your life and destiny"
+  },
+  {
+    id: 3,
+    name: "Dominion Mindset Hoodie",
+    price: "$49.99",
+    image: "/lovable-uploads/1005aed9-5939-4b5c-ad5f-ce5b9e571f5c.png",
+    category: "Apparel",
+    description: "Cultivate the mindset of success and dominion"
+  },
+  {
+    id: 4,
     name: "Dominion T-Shirt",
     price: "$29.99",
     image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop",
@@ -12,7 +36,7 @@ const products = [
     description: "Premium cotton tee with motivational messaging"
   },
   {
-    id: 2,
+    id: 5,
     name: "Power Hoodie",
     price: "$49.99",
     image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=500&fit=crop",
@@ -20,7 +44,7 @@ const products = [
     description: "Comfortable hoodie for your journey to greatness"
   },
   {
-    id: 3,
+    id: 6,
     name: "Victory Cap",
     price: "$24.99",
     image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&h=500&fit=crop",
@@ -28,7 +52,7 @@ const products = [
     description: "Stylish cap to crown your achievements"
   },
   {
-    id: 4,
+    id: 7,
     name: "Motivation Mug",
     price: "$19.99",
     image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&h=500&fit=crop",
@@ -36,7 +60,7 @@ const products = [
     description: "Start your day with inspiration"
   },
   {
-    id: 5,
+    id: 8,
     name: "Success Journal",
     price: "$34.99",
     image: "https://images.unsplash.com/photo-1517971129774-a8b24fbe8cd9?w=500&h=500&fit=crop",
@@ -44,7 +68,7 @@ const products = [
     description: "Document your path to greatness"
   },
   {
-    id: 6,
+    id: 9,
     name: "Dominion Water Bottle",
     price: "$27.99",
     image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&h=500&fit=crop",
