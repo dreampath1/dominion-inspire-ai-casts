@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import ProductCard from "@/components/ProductCard";
 
@@ -7,7 +6,7 @@ const products = [
     id: 1,
     name: "Show Up Every Day Tee",
     price: "$29.99",
-    image: "/lovable-uploads/eadd9093-0fe4-46d0-8de7-dc3f436541f7.png",
+    image: "/lovable-uploads/2eb03ea0-518d-471e-8b6f-83667ff19997.png",
     category: "Apparel",
     description: "Daily motivation reminder - consistency is key"
   },
