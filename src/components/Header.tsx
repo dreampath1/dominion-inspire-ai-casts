@@ -49,6 +49,7 @@ const Header = () => {
           <a href="#about" className="hover:text-orange-500 transition-colors">About</a>
           <a href="#community" className="hover:text-orange-500 transition-colors">Community</a>
           <Link to="/merchandise" className="hover:text-orange-500 transition-colors">Shop</Link>
+          <Link to="/text-to-speech" className="hover:text-orange-500 transition-colors">TTS</Link>
         </div>
       </nav>
 
@@ -66,6 +67,7 @@ const Header = () => {
           <a href="#about" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>About</a>
           <a href="#community" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>Community</a>
           <Link to="/merchandise" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>Shop</Link>
+          <Link to="/text-to-speech" className="block hover:text-orange-500 transition-colors" onClick={() => setIsMenuOpen(false)}>TTS</Link>
         </motion.div>
       )}
     </header>
